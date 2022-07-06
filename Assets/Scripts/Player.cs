@@ -23,7 +23,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         //MovimientoJugador();
-        PlayerMoveMentRE();             
+        PlayerMoveMentRE();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ToggleCamara();
+        }
+            
     }
 
     void MovimientoJugador()
@@ -42,4 +48,19 @@ public class Player : MonoBehaviour
         float hor = Input.GetAxis("Horizontal");
         transform.Rotate(new Vector3(0, hor, 0) * rotateSpeed * Time.deltaTime);
      }
+
+    void ToggleCamara()
+    {
+        if (camUno.activeInHierarchy)
+        {
+            camUno.SetActive(false);
+            camDos.SetActive(true);
+        }
+        else
+        {
+            camUno.SetActive(true);
+            camDos.SetActive(false);
+        }
+
+    }
 }
